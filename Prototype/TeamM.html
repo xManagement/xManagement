@@ -9,6 +9,7 @@
     <script type="text/ecmascript" src="jqGrid/4.8.0/js/jquery.jqGrid.min.js"></script>
     <!-- A link to a Boostrap  and jqGrid Bootstrap CSS siles-->
     <script>
+		$.jgrid.defaults.width = 800;
 		$.jgrid.defaults.responsive = true;
 		$.jgrid.defaults.styleUI = 'Bootstrap';
 	</script>
@@ -16,9 +17,9 @@
     <meta charset="utf-8" />
     <title>jqGrid Loading Data - JSON</title>
 	<link href="css-template/navbar-fixed-top.css" rel="stylesheet" type="text/css">
+	<link href="jqGrid/4.8.0/css/ui.jqgrid-bootstrap-ui.css" rel="stylesheet" type="text/css">
 	<link href="bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="jquery-ui/bootstrap/css/custom-theme/jquery.ui.1.10.0.ie.css" rel="stylesheet" type="text/css">
-	<link href="jqGrid/4.8.0/css/ui.jqgrid-bootstrap-ui.css" rel="stylesheet" type="text/css">
 	<link href="jqGrid/4.8.0/css/ui.jqgrid-bootstrap.css" rel="stylesheet" type="text/css">
 	</head>
 <body>
@@ -39,7 +40,7 @@
 		  	<li><a href="index.html">Home</a></li>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">xPlanner <span class="caret"></span></a>
 			  <ul class="dropdown-menu">
-                <li><a href="#">Critical Path Analysis</a></li>
+                <li><a href="CPA.html">Critical Path Analysis</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Last 5 snapshot</li>
 				<li><a href="#">Project A - 20151107</a></li>
@@ -50,7 +51,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Configuration <span class="caret"></span></a>
               <ul class="dropdown-menu">
 			   	<li><a href="#">Project Information</a></li>
-                <li><a href="TeamM.html">Team Management</a></li>
+                <li><a href="#">Team Management</a></li>
                 <li><a href="#">Delivery Throughput</a></li>
                 <li><a href="#">Define Work Category</a></li>
               </ul>
@@ -63,37 +64,20 @@
       </div>
     </nav>
     </div>
-  	<div class="panel panel-default">
-	  <div class="panel-heading">CPA</div>
-	  <div class="panel-body">    
-   	     <table id="jqGrid"></table>
-    	 <div id="jqGridPager"></div>
-	</div>
-<script type="text/javascript"> 
 	
+  	<div class="panel panel-default">
+	  <div class="alert alert-success" role="alert">You have sucessfully removed a team.</div>
+	  <div class="panel-heading">Team Management</div>
+	  <div class="panel-body">
+	  <form class="navbar-form navbar-left" role="search">
+	  	<div class="form-group form-group-sm">
+			<input type="text" class="form-control" placeholder="Team Name">
+		</div>
+		<button type="submit" class="btn btn-default btn-sm">Quick Add</button>
+	  </form>
+	  </div>
+	  
+	</div>
 
-$(document).ready(function () {
-
-		$("#jqGrid").jqGrid({
-		url: 'data.json',
-		datatype: "json",
-		 colModel: [
-			{ label: 'Category Name', name: 'CategoryName', width: 75 },
-			{ label: 'Product Name', name: 'ProductName', width: 90 },
-			{ label: 'Country', name: 'Country', width: 100 },
-			{ label: 'Price', name: 'Price', width: 80, sorttype: 'integer' },
-			// sorttype is used only if the data is loaded locally or loadonce is set to true
-			{ label: 'Quantity', name: 'Quantity', width: 80, sorttype: 'number' }                   
-		],
-		width: "100%",
-		height: 300,
-		viewrecords: true, // show the current page, data rang and total records on the toolbar
-		rowNum: 60,
-		loadonce: true, // this is just for the demo
-		pager: "#jqGridPager"
-	});
-});
-
- </script>
 </body>
 </html>
